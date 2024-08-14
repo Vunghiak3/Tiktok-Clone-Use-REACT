@@ -1,0 +1,97 @@
+.search, .search-result{
+    width: 500px;
+}
+
+.search{
+    position: relative;
+    height: var(--search-height);
+    background-color: var(--search-color-border);
+    border: 1.5px solid var(--search-color-border);
+    border-radius: 92px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.05s linear;
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: 9px;
+        bottom: 9px;
+        right: var(--search-button-width);
+        width: 1px;
+        background-color: rgb(22, 24, 35, 0.12);
+    }
+
+    &:focus-within{
+        border-color: rgb(22, 24, 35, 0.2);
+    }
+    
+    input{
+        color: #828282;
+        font-size: 1.6rem;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 100%;
+        color: var(--black);
+        flex: 1;
+        width: 100%;
+        caret-color: var(--primary);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn{
+        color: rgb(22, 24, 35, 0.75);
+    }
+
+    .clear, .loading{
+        position: absolute;
+        right: calc(var(--search-button-width) + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgb(22, 24, 35, 0.34);
+        font-size: 1.6rem;
+        cursor: pointer;
+    }
+
+    .loading{
+        animation: spinner 0.5s linear infinite;
+    }
+
+    @keyframes spinner {
+        from{
+            transform: translateY(-50%) rotate(0);
+        }
+        to{
+            transform: translateY(-50%) rotate(360deg);
+        }
+    }
+
+    .search-btn{
+        width: var(--search-button-width);
+        height: 100%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.1s linear;
+        font-size: 2rem;
+        color: rgb(22, 24, 35, 0.34);
+
+        &:hover{
+            background-color: rgb(22, 24, 35, 0.03);
+            color: black!important;
+        }
+
+        &:active{
+            background-color: rgb(22, 24, 35, 0.06);
+        }
+    }
+}
+
+// css search result
+.search-title{
+    color: rgb(22, 24, 35, 0.5);
+    font-weight: 500;
+    padding: 5px 12px;
+}
